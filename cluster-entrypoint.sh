@@ -24,4 +24,7 @@ rabbitmqctl stop
 sleep 2s
 
 # Start it
-rabbitmq-server
+# entrypoint 脚本方式，会将脚本本身作为1号进程
+# 因此在脚本末尾需要启动服务！！！
+# 否则1号进程执行完脚本就退出了，连带着容器一起退出
+rabbitmq-server 
