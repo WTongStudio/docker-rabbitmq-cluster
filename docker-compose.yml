@@ -10,6 +10,8 @@ services:
       - RABBITMQ_DEFAULT_USER=${RABBITMQ_DEFAULT_USER}
       - RABBITMQ_DEFAULT_PASS=${RABBITMQ_DEFAULT_PASS}
       - RABBITMQ_DEFAULT_VHOST=${RABBITMQ_DEFAULT_VHOST}
+    ports:
+      - 15692:15692 # prometheus
 
   rabbitmq2:
     image: rabbitmq:3-management
@@ -44,3 +46,10 @@ services:
     ports:
       - 15672:15672
       - 5672:5672
+
+  grafana:
+    image: grafana/grafana
+    hostname: grafana
+    restart: always
+    ports:
+      - 3000:3000
